@@ -4,5 +4,4 @@ class Solution:
         ans = []
         for n in candies:
             ans.append(n + extraCandies >= m)
-
         return ans
