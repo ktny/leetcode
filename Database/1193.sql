@@ -1,12 +1,5 @@
-WITH tmp AS (
-    SELECT
-        *,
-        left(trans_date :: text, 7) AS MONTH
-    FROM
-        Transactions
-)
 SELECT
-    MONTH,
+    to_char(trans_date, 'YYYY-MM') AS MONTH,
     country,
     sum(
         CASE
@@ -23,7 +16,7 @@ SELECT
         END
     ) AS approved_total_amount
 FROM
-    tmp
+    transactions
 GROUP BY
     MONTH,
     country;
