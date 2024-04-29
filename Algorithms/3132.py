@@ -10,10 +10,13 @@ class Solution:
             x = min2 - min1
             fail = 0
 
+            # num1, num2どちらも頭から順番に見ていく
             while i < len(nums1) and j < len(nums2):
+                # 同じ数であれば両方とも進める
                 if nums1[i + start] + x == nums2[j]:
                     i += 1
                     j += 1
+                # 異なればnum1だけ進める
                 else:
                     i += 1
                     fail += 1
@@ -21,6 +24,7 @@ class Solution:
                 if fail + start > 2:
                     break
 
+            # 最終的にnums2が最後までミス2回までで進んでいれば合格
             if fail + start <= 2 and j == len(nums2):
                 ans = min(ans, x)
 
